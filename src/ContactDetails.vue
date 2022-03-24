@@ -2,7 +2,7 @@
   <div class="contactdetails">
     <h1>Contact Details</h1>
     <p>
-      <stron>Name:</stron> <strong>{{ username }}</strong>
+      <stron>Name:</stron> <strong>{{ name }}</strong>
     </p>
     <p>
       <stron>Website:</stron> <strong>{{ website }}</strong>
@@ -16,12 +16,12 @@
 
 <script>
 export default {
-  props: ["username", "website", "address"],
+  inject: ["name", "website", "address"],
+  // props: ["username", "website", "address"],
+  props: {},
 
   data() {
-    return {
-      name: "Manunure Rashid",
-    };
+    return {};
   },
 };
 </script>

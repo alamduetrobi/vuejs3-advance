@@ -1,133 +1,250 @@
 <template>
-  <!-- <div>
-   
-    //Glogval Component
-    <contact-details
-      username="robi"
-      website="http//:google.com"
-      address="Dhaka"
-    ></contact-details>
-    <contact-details
-      username="alam"
-      website="http//:google.com"
-      address="Dhaka"
-    ></contact-details>
-    <contact-details
-      username="Humayra"
-      website="http//:google.com"
-      address="Dhaka"
-    ></contact-details>
-    <contact-details
-      username="Redwan"
-      website="http//:google.com"
-      address="Dhaka"
-    ></contact-details>
-
-    //Local Component
-    <ContactDetails></ContactDetails>
-  </div>
-
-  <the-card cardtitle="test the attribute">
-    <p>This is the slot content</p>
-  </the-card>
-  <the-card cardtitle="test the attribute 2">
-    <img
-      src="https://scontent.fcgp17-1.fna.fbcdn.net/v/t45.1600-4/250577748_6273299228895_1251377384485472853_n.jpg?stp=c0.110.285.285a_dst-jpg_p285x285&_nc_cat=111&ccb=1-5&_nc_sid=eaa83b&_nc_eui2=AeGaur1Yolc-oMoOvhLmLaTy-W6MJOKiB3D5bowk4qIHcMyiZ-Vi_zurq-ejH6DqhL2i5lfUkqj3K7AueG1r7kJj&_nc_ohc=kPrcvg6d9lkAX_C_EQ4&tn=zViLvsrtbBmT8ALa&_nc_ht=scontent.fcgp17-1.fna&oh=00_AT_C_d4zP52pobXMI_2SAhBb8hNpGj9-rujv_vFiE4T36g&oe=623EF68C"
-    />
-    <p>This paraa with image</p>
-    <p>This paraa with image</p>
-    <p>This paraa with image</p>
-    <p>This paraa with image</p>
-  </the-card>
-  <the-card cardtitle="test the attribute 3"></the-card>
-  <the-card cardtitle="test the attribute 4 "></the-card> -->
-  <!-- <the-card cardtitle="test the attribute 3"></the-card> -->
-  <!-- <the-card cardtitle="test the attribute 4"></the-card> -->
-  <h1>{{ msg }}</h1>
-
+  <header>
+    <h2>{{ msg }}</h2>
+  </header>
   <div class="container">
-    <p>My Rating: {{ myRating }}</p>
+    <h1>New user Registration</h1>
 
-    <the-rating v-model="myRating"></the-rating>
+    <label for="">Full Name</label> <br />
+    <input
+      type="text"
+      name=""
+      id=""
+      placeholder="Enter your Full Name"
+      v-model="formData.fullName"
+    />
+    <br />
+    <label for="">About You</label> <br />
+    <textarea v-model="formData.aboutYou"></textarea>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <label for="">Gender</label>
+    <br />
+    <label for="">
+      <input
+        type="radio"
+        name="gender"
+        id=""
+        value="M"
+        v-model="formData.gender"
+      />Male
+    </label>
+    <label for="">
+      <input
+        type="radio"
+        name="gender"
+        id=""
+        class="ml-2"
+        checked="checked"
+        value="F"
+        v-model="formData.gender"
+      />Female
+    </label>
+    <label for="">
+      <input
+        type="radio"
+        name="gender"
+        class="ml-2"
+        id=""
+        value="Other"
+        v-model="formData.gender"
+      />Other
+    </label>
+    <hr />
+
+    <label for="">Language</label>
+
+    <br />
+    <br />
+    <br />
+
+    <select name="" id="" v-model="formData.language">
+      <option value="">-- Select One --</option>
+      <option value="B">Bangla</option>
+      <option value="E">English</option>
+    </select>
+
+    <br />
+    <br />
+
+    <label for="">Skills</label>
+
+    <br />
+    <br />
+    <br />
+
+    <select multiple name="" id="" v-model="formData.skills">
+      <option value="B">Bangla</option>
+      <option value="thml">HTML</option>
+      <option value="css">CSS</option>
+      <option value="java">JAVA</option>
+      <option value="fdasf">Javascript</option>
+      <option value="E">English</option>
+    </select>
+    <br />
+    <br />
+    <br />
+
+    <label for="">Social Account</label>
+    <label for="">
+      <input
+        v-model="formData.socialsaccount"
+        type="checkbox"
+        value="fb"
+      />Facebook
+    </label>
+    <label for="">
+      <input
+        v-model="formData.socialsaccount"
+        type="checkbox"
+        value="tw"
+      />Twitter
+    </label>
+    <label for="">
+      <input
+        v-model="formData.socialsaccount"
+        type="checkbox"
+        value="ln"
+      />Linkdin
+    </label>
+    <label for="">
+      <input
+        v-model="formData.socialsaccount"
+        type="checkbox"
+        value="in"
+      />Instragram
+    </label>
+    <!-- <label for=""> <input type="checkbox" />Facebook </label> -->
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <label for="">Agrement</label> <br />
+    <label for="">
+      <input type="checkbox" v-model="formData.agred" /> I aggress your terms
+      and condition
+    </label>
+
+    <hr />
+
+    <div v-for="(value, key) in formData" :key="key">
+      <strong>{{ key }} : {{ value }}</strong>
+    </div>
+
+    <!-- <p>{{ formData }}</p> -->
+    <!-- <p>{{ formData }}</p> -->
   </div>
-
-  <!-- ===Procut Card Start Here =============== -->
-  <product-card
-    v-for="product in products"
-    :key="product.name"
-    :product="product"
-    @buy-now-click="buyNow"
-    @add-now-click="addtocard"
-    @toggle-favourite="handleToggle"
-  >
-    <!-- <div class="product-card">
-      <div class="product-card_title"></div>
-      <div class="product-card_body"></div>
-      <div class="product-card_footer"></div>
-    </div> -->
-  </product-card>
-
-  <!-- ===Procut Card Start Here =============== -->
 </template>
 
 <script>
+// import Login from "./sections/Login.vue";
+// import Register from "./sections/Register.vue";
 // import ContactDetails from "./ContactDetails.vue";
-// import TheCard from './TheCard.vue';
-// import TheCard from "./TheCard.vue";
-import ProductCard from "./ProductCard.vue";
-import TheRating from "./TheRating.vue";
-import CreditCard from "./CreditCard.vue";
 export default {
   data() {
     return {
-      msg: "Welcome to the tuttorials",
-      products: [
-        {
-          name: "Apple iphone 12 pro",
-          thumbnail: "https://vitejs.dev/logo.svg",
-          price: "250taka",
-          addedToFavourite: true,
-        },
-        {
-          name: "Walton pro iphone 12 pro",
-          thumbnail: "https://vitejs.dev/logo.svg",
-          price: "150taka",
-          addedToFavourite: false,
-        },
-        {
-          name: "Desco pro iphone 12 pro",
-          thumbnail: "https://vitejs.dev/logo.svg",
-          price: "1050taka",
-          addedToFavourite: true,
-        },
-      ],
-      myRating: 4,
+      msg: "Vue3",
+      name: "",
+      formData: {
+        fullName: "Robi",
+        aboutYou: "se",
+        gender: "Other",
+        language: "",
+        skills: [],
+        agred: "false",
+        socialsaccount: [],
+      },
+      // myComment: "",
+      // shoDialog: false,
+      // notificaton: [],
+      // tabs: ["Login", "Register", "ContactDetails"],
+      // activeTab: "Login",
+      // name: "alam",
+      // website: "https://google.com",
+      // address: "Dhaka",
     };
   },
-
-  methods: {
-    buyNow(pdc) {
-      console.log(pdc);
-      // console.log("Buy now working");
-    },
-
-    addtocard() {
-      console.log("add to now working");
-    },
-
-    handleToggle(product) {
-      product.addedToFavourite = !product.addedToFavourite;
-    },
+  methods() {},
+  mounted() {
+    console.log(this.$refs.nameInput);
   },
-
+  // provide: {},
+  // provide() {
+  //   return {
+  //     name: this.name,
+  //     website: this.website,
+  //     address: this.address,
+  //   };
+  // },
   components: {
+    // Login,
+    // Register,
     // ContactDetails,
-    // TheCard,
-    ProductCard,
-    TheRating,
-    CreditCard,
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul {
+  margin-left: 22px;
+}
+body {
+  font-family: sans-serif;
+  line-height: 1.8;
+}
+header {
+  background-color: #1f2c46;
+  color: #41b883;
+  font-size: 22px;
+  padding: 22px;
+}
+header h2 {
+  text-align: center;
+}
+.container {
+  padding: 22px;
+  /* color: red;
+  font-size: 33px;
+  border: 3px solid green; */
+}
+
+button {
+  margin: 5px;
+  padding: 5px 11px;
+  cursor: pointer;
+}
+.shadowed {
+  box-shadow: 0 0 3px 2px #111;
+}
+
+.tab_menu {
+  display: flex;
+}
+.tab_menu-item {
+  padding: 6px 15px;
+  background-color: rgb(0, 104, 192);
+  cursor: pointer;
+}
+input {
+  padding: 5px 11px;
+  margin-bottom: 11px;
+}
+textarea {
+  padding: 5px 11px;
+  margin-bottom: 11px;
+}
+
+.ml-2 {
+  margin-left: 11px;
+}
+</style>
